@@ -1,4 +1,5 @@
 import Button from '@Components/Button';
+import { Flex } from '@Components/elements';
 
 interface PaginationProps {
   next: string | null;
@@ -8,10 +9,18 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ next, previous, onClick }) => {
   return (
-    <>
-      {previous && <Button onClick={() => onClick(true)}>Previous</Button>}
-      {next && <Button onClick={onClick}>Next</Button>}
-    </>
+    <Flex>
+      {previous ? (
+        <Button onClick={() => onClick(false)}>Previous</Button>
+      ) : (
+        <Button disabled={true}>Previous</Button>
+      )}
+      {next ? (
+        <Button onClick={() => onClick()}>Next</Button>
+      ) : (
+        <Button disabled={true}>Next</Button>
+      )}
+    </Flex>
   );
 };
 

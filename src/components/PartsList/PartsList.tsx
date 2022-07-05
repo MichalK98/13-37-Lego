@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as theme from '@Components/theme';
 
 import { Part } from '@Interfaces';
-import Button from '@Components/Button';
+import Img from '@Components/Img';
 
 type StyledPartProps = {
   background: string;
@@ -28,7 +28,7 @@ const StyledPart = styled.a<StyledPartProps>`
   p {
     position: absolute;
     right: 15px;
-    bottom: 10px;
+    bottom: 0;
   }
 `;
 
@@ -46,7 +46,7 @@ const PartsList: React.FC<PartsListProps> = ({ parts }) => {
             href={data.part.part_url}
             background={data.color.rgb}
           >
-            <img width="80" src={data.part.part_img_url} alt={data.part.name} />
+            <Img src={data.part.part_img_url} alt={data.part.name} />
             <p>{data.quantity}x</p>
           </StyledPart>
         );

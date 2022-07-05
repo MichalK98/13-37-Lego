@@ -1,9 +1,17 @@
 import styled from 'styled-components';
-import * as theme from '@Components/theme';
+
+type FlexProps = {
+  justify?: string;
+};
 
 export const Container = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: auto;
-  padding: 15px;
+  padding: 20px 15px;
+`;
+
+export const Flex = styled.div<FlexProps>`
+  display: flex;
+  justify-content: ${({ justify }) => (justify ? `${justify}` : 'flex-end')};
 `;

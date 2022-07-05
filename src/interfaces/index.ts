@@ -10,8 +10,18 @@ export type Part = {
 };
 
 export type Data = {
-  count: number;
   next: string | null;
   previous: string | null;
-  results: Part;
+  results: Part[];
+};
+
+export type Lego = {
+  all_parts: number;
+  total_sets: number;
+  total_figs: number;
+};
+
+export type Profile = {
+  lego: Lego;
+  username: string;
 };

@@ -1,24 +1,25 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { Container } from '@Components/elements';
-import { getAllParts } from './api/parts';
+import { getAllParts, getProfile } from './api/parts';
 
 import PartsListContainer from 'src/containers/PartsListContainer';
-import { Data } from '@Interfaces';
+import { Data, Profile } from '@Interfaces';
 import styled from 'styled-components';
 
 interface HomeProps {
-  data: Data;
+  allParts: Data;
+  profile: Profile;
 }
 
 const StyledOverlay = styled.div`
   background: #002b55f0;
 `;
 
-const Home: NextPage<HomeProps> = ({ data }) => {
+const Home: NextPage<HomeProps> = ({ allParts, profile }) => {
   return (
     <StyledOverlay>
       <Container>
-        <PartsListContainer initialData={data} />
+        <PartsListContainer initialData={allParts} profile={profile} />
       </Container>
     </StyledOverlay>
   );
@@ -27,7 +28,13 @@ const Home: NextPage<HomeProps> = ({ data }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getAllParts()
+  const allParts = await getAllParts()
+    .then((res) => res.json())
+    .catch((err) => {
+      throw err;
+    });
+
+  const profile = await getProfile()
     .then((res) => res.json())
     .catch((err) => {
       throw err;
@@ -35,7 +42,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      data
+      allParts,
+      profile
     }
   };
 };

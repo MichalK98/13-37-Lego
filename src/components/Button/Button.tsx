@@ -3,7 +3,8 @@ import * as theme from '@Components/theme';
 
 interface ButtonProps {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
+  disabled?: boolean;
 }
 
 const StyledButton = styled.button`
@@ -22,10 +23,24 @@ const StyledButton = styled.button`
     background-color: ${theme.colors.white};
     color: ${theme.colors.green};
   }
+
+  &:disabled {
+    background-color: ${theme.colors.grey};
+    color: ${theme.colors.white};
+
+    &:hover {
+      cursor: initial;
+      background-color: ${theme.colors.grey};
+    }
+  }
 `;
 
-const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+const Button: React.FC<ButtonProps> = ({ disabled, children, onClick }) => {
+  return (
+    <StyledButton disabled={disabled} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;

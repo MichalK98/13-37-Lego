@@ -66,7 +66,7 @@ const Header: React.FC = () => {
     <StyledHeader>
       <Container>
         <Nav>
-          <Logo src="logo.svg" alt="" />
+          <Logo src="logo.svg" alt="logo" />
           <ul>
             <li>
               <a href="/">Who we are</a>
