@@ -1,14 +1,14 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { Container } from '@Components/elements';
-import { getAllParts, getProfile } from './api/parts';
+import { getAllSets, getProfile } from './api/parts';
 
-import PartsListContainer from 'src/containers/PartsListContainer';
-import { Data, Profile } from '@Interfaces';
+import SetsListContainer from 'src/containers/SetsListContainer';
+import { AllSets, Profile } from '@Interfaces';
 import styled from 'styled-components';
 import TopBar from '@Components/TopBar';
 
 interface HomeProps {
-  allParts: Data;
+  allSets: AllSets;
   profile: Profile;
 }
 
@@ -16,12 +16,12 @@ const StyledOverlay = styled.div`
   background: #002b55f0;
 `;
 
-const Home: NextPage<HomeProps> = ({ allParts, profile }) => {
+const Home: NextPage<HomeProps> = ({ allSets, profile }) => {
   return (
     <StyledOverlay>
       <Container>
         <TopBar profile={profile} />
-        {/* <PartsListContainer initialData={allParts} profile={profile} /> */}
+        <SetsListContainer initialData={allSets} />
       </Container>
     </StyledOverlay>
   );
@@ -30,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ allParts, profile }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allParts = await getAllParts()
+  const allSets = await getAllSets()
     .then((res) => res.json())
     .catch((err) => {
       throw err;
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      allParts,
+      allSets,
       profile
     }
   };

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type FlexProps = {
   justify?: string;
+  align?: string;
 };
 
 export const Container = styled.div`
@@ -13,5 +14,6 @@ export const Container = styled.div`
 
 export const Flex = styled.div<FlexProps>`
   display: flex;
-  justify-content: ${({ justify }) => (justify ? `${justify}` : 'flex-end')};
+  justify-content: ${({ justify }) => (justify ? `${justify}` : 'flex-start')};
+  align-items: ${({ align }) => (align ? `${align}` : 'normal')};
 `;

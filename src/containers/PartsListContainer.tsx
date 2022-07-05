@@ -1,11 +1,11 @@
 import Pagination from '@Components/Pagination';
 import PartsList from '@Components/PartsList';
-import { Data } from '@Interfaces';
+import { AllParts } from '@Interfaces';
 import { getAllParts } from '@Pages/api/parts';
 import { useState } from 'react';
 
 interface PartsListContainerProps {
-  initialData: Data;
+  initialData: AllParts;
 }
 
 const PartsListContainer: React.FC<PartsListContainerProps> = ({

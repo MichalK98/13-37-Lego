@@ -3,12 +3,12 @@ import { Container } from '@Components/elements';
 import { getAllParts, getProfile } from './api/parts';
 
 import PartsListContainer from 'src/containers/PartsListContainer';
-import { Data, Profile } from '@Interfaces';
+import { AllParts, Profile } from '@Interfaces';
 import styled from 'styled-components';
 import TopBar from '@Components/TopBar';
 
 interface HomeProps {
-  allParts: Data;
+  allParts: AllParts;
   profile: Profile;
 }
 
