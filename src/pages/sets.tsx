@@ -21,7 +21,7 @@ const Home: NextPage<HomeProps> = ({ allParts, profile }) => {
     <StyledOverlay>
       <Container>
         <TopBar profile={profile} />
-        <PartsListContainer initialData={allParts} />
+        {/* <PartsListContainer initialData={allParts} profile={profile} /> */}
       </Container>
     </StyledOverlay>
   );

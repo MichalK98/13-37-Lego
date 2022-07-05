@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import * as theme from '@Components/theme';
 import { Container } from '@Components/elements';
@@ -35,11 +37,25 @@ const Nav = styled.nav`
       margin: 0 15px;
 
       a {
+        position: relative;
         color: ${theme.colors.white};
         text-decoration: none;
+        padding: 10px;
 
         &:hover {
           color: ${theme.colors.green};
+        }
+      }
+
+      &.active {
+        a::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: ${theme.colors.green};
         }
       }
     }
@@ -47,6 +63,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
   max-width: 100px;
 `;
 
@@ -62,26 +79,26 @@ const Line = styled.div`
 `;
 
 const Header: React.FC = () => {
+  const router = useRouter();
   return (
     <StyledHeader>
       <Container>
         <Nav>
-          <Logo src="logo.svg" alt="logo" />
+          <Link href="/">
+            <Logo src="logo.svg" alt="logo" />
+          </Link>
           <ul>
-            <li>
-              <a href="/">Who we are</a>
+            <li className={router.pathname == '/' ? 'active' : ''}>
+              <Link href="/">All Parts</Link>
+            </li>
+            <li className={router.pathname == '/sets' ? 'active' : ''}>
+              <a href="/sets">Sets</a>
+            </li>
+            <li className={router.pathname == '/figures' ? 'active' : ''}>
+              <a href="/figures">Figures</a>
             </li>
             <li>
-              <a href="/">What we do</a>
-            </li>
-            <li>
-              <a href="/">Knowledge sharing</a>
-            </li>
-            <li>
-              <a href="/">Join</a>
-            </li>
-            <li>
-              <a href="/">Inquire Contact</a>
+              <a href="https://tretton37.com/contact">Contact</a>
             </li>
           </ul>
           <HamburgerMenu>

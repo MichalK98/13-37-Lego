@@ -1,18 +1,15 @@
 import Pagination from '@Components/Pagination';
 import PartsList from '@Components/PartsList';
-import TopBar from '@Components/TopBar';
-import { Data, Profile } from '@Interfaces';
+import { Data } from '@Interfaces';
 import { getAllParts } from '@Pages/api/parts';
 import { useState } from 'react';
 
 interface PartsListContainerProps {
   initialData: Data;
-  profile: Profile;
 }
 
 const PartsListContainer: React.FC<PartsListContainerProps> = ({
-  initialData,
-  profile
+  initialData
 }) => {
   const [data, setData] = useState(initialData);
 
@@ -28,7 +25,6 @@ const PartsListContainer: React.FC<PartsListContainerProps> = ({
 
   return (
     <>
-      <TopBar profile={profile} />
       <PartsList parts={data.results} />
       <Pagination
         next={data.next}
