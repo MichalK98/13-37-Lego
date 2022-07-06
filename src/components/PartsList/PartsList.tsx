@@ -3,25 +3,11 @@ import * as theme from '@Components/theme';
 
 import { Part } from '@Interfaces';
 import Img from '@Components/Img';
+import { Grid } from '@Components/elements';
 
 type StyledPartProps = {
   background: string;
 };
-
-const StyledList = styled.div`
-  margin: 20px 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-
-  @media (max-width: ${theme.media.tablet}) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @media (max-width: ${theme.media.mobile}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
 
 const StyledPart = styled.a<StyledPartProps>`
   display: flex;
@@ -46,7 +32,7 @@ interface PartsListProps {
 
 const PartsList: React.FC<PartsListProps> = ({ parts }) => {
   return (
-    <StyledList>
+    <Grid grid={{ desktop: 6, tablet: 4, mobile: 3 }}>
       {parts.map((data: any, index) => {
         return (
           <StyledPart
@@ -59,7 +45,7 @@ const PartsList: React.FC<PartsListProps> = ({ parts }) => {
           </StyledPart>
         );
       })}
-    </StyledList>
+    </Grid>
   );
 };
 

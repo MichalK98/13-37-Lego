@@ -3,22 +3,7 @@ import * as theme from '@Components/theme';
 
 import { Figure } from '@Interfaces';
 import Img from '@Components/Img';
-import { Flex, StyledStat } from '@Components/elements';
-
-const StyledList = styled.div`
-  margin: 20px 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-
-  @media (max-width: ${theme.media.tablet}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: ${theme.media.mobile}) {
-    grid-template-columns: 1fr;
-  }
-`;
+import { Flex, Grid, StyledStat } from '@Components/elements';
 
 const StyledFigure = styled.a`
   display: flex;
@@ -45,7 +30,7 @@ interface FiguresListProps {
 
 const FiguresList: React.FC<FiguresListProps> = ({ figures }) => {
   return (
-    <StyledList>
+    <Grid grid={{ desktop: 3, tablet: 2, mobile: 1 }}>
       {figures.map((data: any, index) => {
         return (
           <StyledFigure key={index} href={data.minifig.set_url}>
@@ -60,7 +45,7 @@ const FiguresList: React.FC<FiguresListProps> = ({ figures }) => {
           </StyledFigure>
         );
       })}
-    </StyledList>
+    </Grid>
   );
 };
 

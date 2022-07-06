@@ -3,22 +3,7 @@ import * as theme from '@Components/theme';
 
 import { Set } from '@Interfaces';
 import Img from '@Components/Img';
-import { Flex, StyledStat } from '@Components/elements';
-
-const StyledList = styled.div`
-  margin: 20px 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-
-  @media (max-width: ${theme.media.tablet}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: ${theme.media.mobile}) {
-    grid-template-columns: 1fr;
-  }
-`;
+import { Flex, Grid, StyledStat } from '@Components/elements';
 
 const StyledSet = styled.a`
   display: flex;
@@ -41,7 +26,7 @@ interface SetsListProps {
 
 const SetsList: React.FC<SetsListProps> = ({ sets }) => {
   return (
-    <StyledList>
+    <Grid grid={{ desktop: 3, tablet: 2, mobile: 1 }}>
       {sets.map((data: any, index) => {
         return (
           <StyledSet key={index} href={data.set.set_url}>
@@ -56,7 +41,7 @@ const SetsList: React.FC<SetsListProps> = ({ sets }) => {
           </StyledSet>
         );
       })}
-    </StyledList>
+    </Grid>
   );
 };
 
