@@ -4,3 +4,8 @@ export const colors = {
   blue: '#002B55',
   green: '#80C565'
 };
+
+export const media = {
+  tablet: '1024px',
+  mobile: '768px'
+};

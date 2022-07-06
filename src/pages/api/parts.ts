@@ -13,7 +13,13 @@ export const getAllParts = (url: string | null = null) =>
   });
 
 export const getAllSets = (url: string | null = null) =>
-  fetch(url || `${API_URL}users/${USER_TOKEN}/sets/?page_size=6`, {
+  fetch(url || `${API_URL}users/${USER_TOKEN}/sets/?page_size=12`, {
+    method: 'GET',
+    ...defaultHeader
+  });
+
+export const getAllFigures = (url: string | null = null) =>
+  fetch(url || `${API_URL}users/${USER_TOKEN}/minifigs/?page_size=60`, {
     method: 'GET',
     ...defaultHeader
   });

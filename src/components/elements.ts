@@ -17,3 +17,14 @@ export const Flex = styled.div<FlexProps>`
   justify-content: ${({ justify }) => (justify ? `${justify}` : 'flex-start')};
   align-items: ${({ align }) => (align ? `${align}` : 'normal')};
 `;
+
+export const StyledStat = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    max-width: 25px;
+    margin: 0;
+    margin-right: 10px;
+  }
+`;

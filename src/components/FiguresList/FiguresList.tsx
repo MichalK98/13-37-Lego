@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as theme from '@Components/theme';
 
-import { Set } from '@Interfaces';
+import { Figure } from '@Interfaces';
 import Img from '@Components/Img';
 import { Flex, StyledStat } from '@Components/elements';
 
@@ -20,7 +20,7 @@ const StyledList = styled.div`
   }
 `;
 
-const StyledSet = styled.a`
+const StyledFigure = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,35 +29,39 @@ const StyledSet = styled.a`
   color: ${theme.colors.blue};
   text-decoration: none;
 
+  h3 {
+    max-width: calc(100% - 80px);
+  }
+
   h3,
   p {
     margin: 0;
   }
 `;
 
-interface SetsListProps {
-  sets: Set[];
+interface FiguresListProps {
+  figures: Figure[];
 }
 
-const SetsList: React.FC<SetsListProps> = ({ sets }) => {
+const FiguresList: React.FC<FiguresListProps> = ({ figures }) => {
   return (
     <StyledList>
-      {sets.map((data: any, index) => {
+      {figures.map((data: any, index) => {
         return (
-          <StyledSet key={index} href={data.set.set_url}>
-            <Img src={data.set.set_img_url} alt={data.set.name} />
-            <Flex justify="space-between" align="center">
-              <h3>{data.set.name}</h3>
+          <StyledFigure key={index} href={data.minifig.set_url}>
+            <Img src={data.minifig.set_img_url} alt={data.minifig.name} />
+            <Flex justify="space-between" align="flex-end">
+              <h3>{data.minifig.name}</h3>
               <StyledStat>
                 <Img src="/lego/part.svg" alt="logo" />
-                <p>x{data.set.num_parts}</p>
+                <p>x{data.minifig.num_parts}</p>
               </StyledStat>
             </Flex>
-          </StyledSet>
+          </StyledFigure>
         );
       })}
     </StyledList>
   );
 };
 
-export default SetsList;
+export default FiguresList;

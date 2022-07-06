@@ -16,7 +16,7 @@ const StyledOverlay = styled.div`
   background: #002b55f0;
 `;
 
-const Home: NextPage<HomeProps> = ({ allSets, profile }) => {
+const Sets: NextPage<HomeProps> = ({ allSets, profile }) => {
   return (
     <StyledOverlay>
       <Container>
@@ -27,7 +27,7 @@ const Home: NextPage<HomeProps> = ({ allSets, profile }) => {
   );
 };
 
-export default Home;
+export default Sets;
 
 export const getStaticProps: GetStaticProps = async () => {
   const allSets = await getAllSets()

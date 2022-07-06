@@ -43,3 +43,21 @@ export type AllSets = {
   previous: string | null;
   results: Set[];
 };
+
+export type FigureDetail = {
+  name: string;
+  set_img_url: string;
+  set_url: string;
+  num_parts: number;
+};
+
+export type Figure = {
+  minifig: FigureDetail[];
+  quantity: number;
+};
+
+export type AllFigures = {
+  next: string | null;
+  previous: string | null;
+  results: Figure[];
+};

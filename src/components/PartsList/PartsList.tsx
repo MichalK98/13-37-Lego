@@ -13,6 +13,14 @@ const StyledList = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
+
+  @media (max-width: ${theme.media.tablet}) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: ${theme.media.mobile}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const StyledPart = styled.a<StyledPartProps>`
