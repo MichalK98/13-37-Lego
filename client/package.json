@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "author": "Michal Kurowski",
   "dependencies": {
     "next": "12.1.6",
     "react": "18.2.0",
