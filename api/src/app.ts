@@ -1,12 +1,13 @@
 import express, { Express, Request, Response } from "express";
+import routes from "./routes";
 
-const app: Express = express();
 const port = 3050;
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Lego API");
-});
+const app: Express = express();
+app.use(express.json());
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+
+  routes(app);
 });

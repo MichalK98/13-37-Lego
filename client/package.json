@@ -2,13 +2,13 @@
   "name": "next-lego",
   "version": "0.1.0",
   "private": true,
+  "author": "Michal Kurowski",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "author": "Michal Kurowski",
   "dependencies": {
     "next": "12.1.6",
     "react": "18.2.0",
